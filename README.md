@@ -4,7 +4,7 @@ Painel estático para identificar uma apresentação da [lista CMED da Anvisa](h
 
 ## Consulta
 
-1. Abra [`docs/index.html`](docs/index.html) localmente ou a versão pública quando estiver disponível.
+1. Abra o [painel público](https://lucastastrofe.github.io/radar-cmed/) ou [`docs/index.html`](docs/index.html) localmente.
 2. Busque produto, substância, laboratório ou GGREM; confirme apresentação e embalagem.
 3. Selecione a alíquota e a referência PF ou PMVG que se aplica à compra. A tela mostra CAP, restrição hospitalar e marcação `*` da planilha, mas não escolhe a regra automaticamente.
 4. Informe preço por apresentação e quantidade. O resultado é apenas uma diferença aritmética em relação ao teto escolhido.
@@ -37,4 +37,4 @@ python -m unittest -v test_build
 
 ## Versão pública
 
-`docs/index.html` e `docs/cover.png` formam o pacote estático preparado para GitHub Pages. A página usa apenas dados públicos da CMED e não recebe cotações em servidor. A publicação ainda depende de uma conta GitHub autenticada e da ativação de Pages no repositório. O [contrato de requisitos](REQUIREMENTS.md) registra aceites e limites.
+`docs/index.html` e `docs/cover.png` formam o pacote estático preparado para GitHub Pages. A página usa apenas dados públicos da CMED e não recebe cotações em servidor. O painel está publicado em [GitHub Pages](https://lucastastrofe.github.io/radar-cmed/). O [contrato de requisitos](REQUIREMENTS.md) registra aceites e limites.
