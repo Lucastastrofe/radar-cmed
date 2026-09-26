@@ -40,4 +40,8 @@ assert.equal(batch[0].status, 'Acima');
 assert.equal(batch[1].status, 'Revisar');
 assert.match(batch[1].reason, /GGREM/);
 assert.equal(vm.runInContext("csvRows('ggrem;descricao\\n123;\"A;B\"')[1][1]", context), 'A;B');
+assert.match(vm.runInContext("csvCell('=HYPERLINK(\"evil\")')", context), /^"'/);
+vm.runInContext("setMode('batch')", context);
+assert.equal(element('batchView').hidden, false);
+assert.equal(element('singleView').hidden, true);
 console.log('Interação, cálculo e análise: OK');
