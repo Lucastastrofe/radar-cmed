@@ -10,6 +10,10 @@ Painel estático para identificar uma apresentação da [lista CMED da Anvisa](h
 4. Informe preço por apresentação e quantidade. O resultado é apenas uma diferença aritmética em relação ao teto escolhido.
 5. Leia o grupo estatístico: número de apresentações e laboratórios, mediana, quartis e posição do PF do item. O grupo usa igualdade textual de substância e apresentação. Não comprova equivalência.
 
+## Análise em lote
+
+Na aba **Análise em lote**, baixe o modelo CSV e preencha uma linha por apresentação cotada. As colunas são `ggrem;preco_unitario;quantidade;referencia;icms`. Use `pf` ou `pmvg` na referência e informe a alíquota da coluna CMED (por exemplo, `0` ou `18`). O preço é por apresentação, na mesma embalagem do GGREM. A importação mostra linhas acima, até a referência e as que precisam de revisão. O botão **Exportar resultado** baixa todas as linhas, inclusive erros, com teto, diferença e motivo. O arquivo é lido no navegador e não é enviado a um servidor. A tabela mostra as primeiras 100 linhas para manter a tela responsiva; a exportação inclui até 5.000 linhas.
+
 O cálculo estatístico usa quartis com interpolação linear (`p × (n−1)`). Para menos de cinco apresentações ou menos de dois laboratórios, a interface evita interpretar a distribuição. Os valores digitados não são enviados nem salvos.
 
 ## Limite operacional
@@ -29,7 +33,7 @@ python build.py cmed_2026-09-09.xlsx --output docs/index.html
 python -m unittest -v test_build
 ```
 
-`test_dashboard.cjs` verifica busca de dados, cotação e estatística com Node.js. A capa de divulgação pode ser recriada com `scripts/render_cover.py` (Pillow e fonte Segoe UI disponível no Windows).
+`test_dashboard.cjs` verifica cálculo individual, estatística e importação em lote com Node.js. A capa de divulgação pode ser recriada com `scripts/render_cover.py` (Pillow e fonte Segoe UI disponível no Windows).
 
 ## Versão pública
 

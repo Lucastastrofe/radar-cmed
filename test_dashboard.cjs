@@ -7,7 +7,7 @@ const elements = new Map();
 function element(id) {
   if (!elements.has(id)) elements.set(id, {
     value: id === 'rate' ? '0' : '', textContent: '', innerHTML: '', className: '', style: {}, hidden: false,
-    classList: {toggle() {}, add() {}}, addEventListener() {}
+    classList: {toggle() {}, add() {}}, addEventListener() {}, setAttribute() {}
   });
   return elements.get(id);
 }
@@ -32,4 +32,12 @@ assert.equal(element('groupLabs').textContent, '12');
 assert.match(element('groupMedian').textContent, /48,47/);
 assert.notEqual(element('groupIqr').textContent, 'amostra pequena');
 assert.match(element('analysisText').textContent, /mediana/);
+const batchItem = vm.runInContext("data.find(x => x.rates['0'][0] != null)", context);
+const csv = `ggrem;preco_unitario;quantidade;referencia;icms\n${batchItem.g};100000,00;2;pf;0\nINVALIDO;12,00;1;pf;0`;
+const batch = vm.runInContext('analyzeBatch(input)', vm.createContext({...context, input: csv}));
+assert.equal(batch.length, 2);
+assert.equal(batch[0].status, 'Acima');
+assert.equal(batch[1].status, 'Revisar');
+assert.match(batch[1].reason, /GGREM/);
+assert.equal(vm.runInContext("csvRows('ggrem;descricao\\n123;\"A;B\"')[1][1]", context), 'A;B');
 console.log('Interação, cálculo e análise: OK');
