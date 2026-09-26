@@ -1,0 +1,9 @@
+*.xlsx
+__pycache__/
+
+/dashboard.html
+
+
+/LINKEDIN_POST.md
+/PROJECT_CONTEXT.md
+/ROTA_MELHOR.md

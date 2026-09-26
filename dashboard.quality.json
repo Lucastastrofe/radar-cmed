@@ -1,0 +1,26 @@
+{
+  "source_file": "cmed_2026-09-09.xlsx",
+  "source_url": "https://www.gov.br/anvisa/pt-br/assuntos/medicamentos/cmed/precos",
+  "generated_utc": "2026-09-26T21:54:41.154582+00:00",
+  "records": 26242,
+  "unique_ggrem": 26242,
+  "rejected_without_pf_zero": 0,
+  "header_row": 54,
+  "rates": [
+    "0",
+    "12",
+    "17",
+    "17,5",
+    "18",
+    "19",
+    "19,5",
+    "20",
+    "20,5",
+    "21",
+    "22",
+    "22,5",
+    "23"
+  ],
+  "cap_marked": 2766,
+  "hospital_restricted": 3928
+}
