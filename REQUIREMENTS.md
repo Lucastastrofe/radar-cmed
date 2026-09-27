@@ -24,6 +24,7 @@ Permitir **triagem de uma cotação por apresentação/GGREM ou de um arquivo co
 | O8 | Preservar privacidade. | Cotação digitada permanece no navegador da sessão e não é enviada nem salva. Nenhum dado de paciente é requerido. |
 | O9 | Importar cotações em lote. | CSV com GGREM, preço unitário, quantidade, PF/PMVG e ICMS; `id_cotacao` e `fornecedor` opcionais. Cada linha recebe situação ou motivo para revisão, sem descartar erros silenciosamente. |
 | O10 | Exportar triagem. | CSV inclui todas as linhas importadas, inclusive inválidas, com identificação, teto, diferença, CAP, restrição hospitalar e motivo. A tabela mostra até 100 linhas; o arquivo aceita até 5.000. |
+| O11 | Permitir avaliação sem arquivo próprio. | Ação **Ver exemplo** carrega três cotações demonstrativas, cobre acima, até a referência e revisão, e identifica preços cotados e fornecedor como fictícios. |
 
 ## Fontes e dependências
 
@@ -38,7 +39,7 @@ Fonte implementada: lista CMED PF/PMVG da Anvisa, 09/09/2026. BPS é apenas link
 
 ## Estado
 
-O1–O10 implementados como protótipo público. Testes de parser, pareamento de alíquotas, escolha explícita da referência, cálculo com item real, lote com GGREM inexistente, contagens e neutralização de fórmula CSV passaram. O usuário confirmou em 26/09/2026 que o fluxo proposto de lote atende à sua expectativa, mas esclareceu que a validação de domínio é responsabilidade do especialista da equipe virtual. A revisão visual desktop e móvel foi feita na URL pública, com correção de largura móvel. Importação e download no navegador ainda não têm evidência de ponta a ponta, pois o seletor de arquivos não respondeu ao controle automatizado. Este protótipo não deve ser promovido como sistema de compras implantado.
+O1–O11 implementados como protótipo público. Testes de parser, pareamento de alíquotas, escolha explícita da referência, cálculo com item real, lote com GGREM inexistente, contagens, exemplo demonstrativo e neutralização de fórmula CSV passaram. O usuário confirmou em 26/09/2026 que o fluxo proposto de lote atende à sua expectativa, mas esclareceu que a validação de domínio é responsabilidade do especialista da equipe virtual. A revisão visual desktop e móvel foi feita na URL pública, com correção de largura móvel. Importação e download no navegador ainda não têm evidência de ponta a ponta, pois o seletor de arquivos não respondeu ao controle automatizado. Este protótipo não deve ser promovido como sistema de compras implantado.
 
 
 
