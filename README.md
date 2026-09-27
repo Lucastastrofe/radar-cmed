@@ -2,6 +2,8 @@
 
 Painel estático para identificar uma apresentação da [lista CMED da Anvisa](https://www.gov.br/anvisa/pt-br/assuntos/medicamentos/cmed/precos), consultar PF/PMVG por alíquota e conferir aritmeticamente uma cotação com a referência escolhida. Uma camada analítica mostra o contexto do PF para registros com a mesma substância e descrição de apresentação.
 
+![Conferência individual no Radar CMED](docs/captura-painel.jpg)
+
 ## Consulta
 
 1. Abra o [painel público](https://lucastastrofe.github.io/radar-cmed/) ou [`docs/index.html`](docs/index.html) localmente.
