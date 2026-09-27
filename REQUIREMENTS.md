@@ -35,7 +35,7 @@ Pedido explícito: retirar a análise em lote e manter utilidade para a rotina h
 
 ## Validação pelo papel de especialista em supply hospitalar
 
-A tela não toma decisão de compra. Ela permite localizar a apresentação, comparar uma cotação com a referência escolhida e mostrar o que falta conferir. Esse recorte atende a uma conferência preliminar por item. Não atende a uma operação institucional completa, que depende de cadastro interno, contratos, regras fiscais e validação da farmácia e de suprimentos. Testes automatizados verificam cálculo e estado incompleto; revisão visual da versão publicada deve confirmar a leitura da tarefa.
+A tela não toma decisão de compra. Ela permite localizar a apresentação, comparar uma cotação com a referência escolhida e mostrar o que falta conferir. Esse recorte atende a uma conferência preliminar por item. Não atende a uma operação institucional completa, que depende de cadastro interno, contratos, regras fiscais e validação da farmácia e de suprimentos. Teste automatizado verificou cálculo e quantidade obrigatória. Na página publicada, a busca e a seleção por GGREM foram exercitadas; preço de R$ 40,00 frente a PF de R$ 34,52 e quantidade 2 resultou em R$ 10,96 de diferença total. A revisão visual confirmou ausência do modo em lote e largura de 390 px sem excedente horizontal no celular. A captura está em `docs/captura-painel.jpg`.
 
 ## Camada analítica e distribuição pública
 
