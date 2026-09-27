@@ -8,7 +8,7 @@ Um comprador ou farmacêutico precisa identificar exatamente a apresentação co
 
 ## Objetivo do incremento
 
-Permitir **triagem de uma cotação por apresentação/GGREM ou de um arquivo com várias cotações**, com consulta da fonte pública e cálculo transparente, sem afirmar conformidade ou economicidade da compra. A tela desktop deve manter os controles e resultados do modo escolhido visíveis sem rolagem da página; listas podem rolar dentro do seu painel.
+Permitir **triagem de uma cotação por apresentação/GGREM**, com consulta da fonte pública e cálculo transparente, sem afirmar conformidade ou economicidade da compra. A tela desktop deve manter os controles e resultados do modo escolhido visíveis sem rolagem da página; listas podem rolar dentro do seu painel.
 
 ## Requisitos e aceite
 
@@ -22,26 +22,20 @@ Permitir **triagem de uma cotação por apresentação/GGREM ou de um arquivo co
 | O6 | Caber em uma tela. | Em desktop comum, cabeçalho, busca, seleção, preços, cotação, resultado e verificações cabem na altura sem rolagem do documento; resultados podem ter rolagem interna. Em celular, duas seções alternáveis preservam a tarefa. |
 | O7 | Proteger interpretação. | Interface diz que teto não é preço praticado; requer validação de ICMS, regra aplicável e correspondência de apresentação. |
 | O8 | Preservar privacidade. | Cotação digitada permanece no navegador da sessão e não é enviada nem salva. Nenhum dado de paciente é requerido. |
-| O9 | Importar cotações em lote. | CSV com GGREM, preço unitário, quantidade, PF/PMVG e ICMS; `id_cotacao` e `fornecedor` opcionais. Cada linha recebe situação ou motivo para revisão, sem descartar erros silenciosamente. |
-| O10 | Exportar triagem. | CSV inclui todas as linhas importadas, inclusive inválidas, com identificação, teto, diferença, CAP, restrição hospitalar e motivo. A tabela mostra até 100 linhas; o arquivo aceita até 5.000. |
-| O11 | Permitir avaliação sem arquivo próprio. | Ação **Ver exemplo** carrega três cotações demonstrativas, cobre acima, até a referência e revisão, e identifica preços cotados e fornecedor como fictícios. |
+| O9 | Encaminhar conferência com cautela. | Resultado explicita que embalagem, ICMS, aplicação de PF/PMVG e preço praticado ainda devem ser conferidos antes da decisão. |
+
 
 ## Fontes e dependências
 
 Fonte implementada: lista CMED PF/PMVG da Anvisa, 09/09/2026. BPS é apenas link externo de pesquisa, sem integração de dados. Não há dados institucionais. Uso institucional exigiria validação por suprimentos, farmácia, jurídico/compliance e TI, com cadastro, contratos, preço praticado, fiscalidade, equivalências, permissões, auditoria e atualização de fonte.
 
+## Mudança de escopo em 27/09/2026
+
+Pedido explícito: retirar a análise em lote e manter utilidade para a rotina hospitalar. Especialista de suprimentos: o recorte é a conferência de uma linha de cotação; o risco principal é comparar apresentação, tributo ou referência incorreta. Requisitos: manter identificação por GGREM, PF/PMVG por alíquota, cálculo unitário e total, indicadores CAP/hospitalar, contexto estatístico e lembrete das verificações humanas. Excluir importação, exportação e demonstração em lote. Quantidade positiva passa a ser necessária para concluir a diferença total.
+
 ## Validação pelo papel de especialista em supply hospitalar
 
-- **Aderência à tarefa:** uma linha de cotação é vinculada a um GGREM, alíquota e referência escolhida. O painel não equipara apresentações por nome nem escolhe a regra por conta própria. Atende à triagem proposta.
-- **Rastreio do lote:** número da linha, ID de cotação e fornecedor opcionais acompanham o resultado; linhas sem GGREM, preço, quantidade, referência ou teto válidos ficam marcadas para revisão. Atende ao requisito de não perder falhas silenciosamente.
-- **Interpretação:** a diferença total é aritmética; CAP e restrição hospitalar são contexto, não aprovação automática. Atende ao limite de domínio para um protótipo público.
-- **UX:** a página publicada foi inspecionada em desktop e em viewport de 390 px. A primeira revisão móvel revelou largura excedente; o layout foi corrigido e medido novamente com painel e janela em 390 px. A conferência individual foi exercitada no navegador com um GGREM real e diferença total de R$ 10,96 para duas apresentações. O estado vazio do lote foi revisado visualmente. A importação por seletor de arquivos e o download do resultado não puderam ser exercitados pelo controle do navegador; parser, classificação, renderização das contagens e montagem segura do CSV foram verificados em teste automatizado.
-
-## Estado
-
-O1–O11 implementados como protótipo público. Testes de parser, pareamento de alíquotas, escolha explícita da referência, cálculo com item real, lote com GGREM inexistente, contagens, exemplo demonstrativo e neutralização de fórmula CSV passaram. O usuário confirmou em 26/09/2026 que o fluxo proposto de lote atende à sua expectativa, mas esclareceu que a validação de domínio é responsabilidade do especialista da equipe virtual. A revisão visual desktop e móvel foi feita na URL pública, com correção de largura móvel. Importação e download no navegador ainda não têm evidência de ponta a ponta, pois o seletor de arquivos não respondeu ao controle automatizado. Este protótipo não deve ser promovido como sistema de compras implantado.
-
-
+A tela não toma decisão de compra. Ela permite localizar a apresentação, comparar uma cotação com a referência escolhida e mostrar o que falta conferir. Esse recorte atende a uma conferência preliminar por item. Não atende a uma operação institucional completa, que depende de cadastro interno, contratos, regras fiscais e validação da farmácia e de suprimentos. Testes automatizados verificam cálculo e estado incompleto; revisão visual da versão publicada deve confirmar a leitura da tarefa.
 
 ## Camada analítica e distribuição pública
 
